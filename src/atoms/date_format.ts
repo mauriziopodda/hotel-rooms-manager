@@ -1,7 +1,7 @@
 import { atom } from 'jotai'
 import { DateFormatsType, managerConfig } from '../manager.config'
 
-export type PeriodType = { start: Date; end: Date }
+export type PeriodType = { start: string; end: string }
 
 const sessionDatesFormat = localStorage.getItem('datesFormat')
 

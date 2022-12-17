@@ -4,10 +4,11 @@ import { roomsAtom, RoomType } from '../atoms/rooms'
 import { getRooms } from '../services/rooms'
 import genericSearch from '../utilities/generic_search'
 
-type RoomFiltersType = Partial<Pick<RoomType, 'floor' | 'number' | 'cleaned'>>
+export type RoomFiltersType = Partial<
+  Pick<RoomType, 'id' | 'floor' | 'number' | 'cleaned'>
+>
 
 const useRooms = (filters?: RoomFiltersType) => {
-  //TODO: implement filters
   const [rooms, setRooms] = useAtom(roomsAtom)
 
   const roomsMemo = useMemo(() => rooms, [rooms])
