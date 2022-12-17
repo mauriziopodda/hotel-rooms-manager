@@ -23,7 +23,7 @@ const useTranslator = () => {
         )
         setTranslations(managerTranslations)
       } catch (err) {
-        console.log('Error occured when fetching books')
+        console.log('Error occured using translations')
       }
     })()
   }, [locale])
