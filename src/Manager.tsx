@@ -1,30 +1,16 @@
 import React, { FC } from 'react'
-import { styled } from '@stitches/react'
-import { useAtomValue } from 'jotai'
-import { localeAtom } from './atoms/locale'
 import useTranslator from './hooks/useTranslator'
 import { LanguageSwitcher } from './components/language_switcher'
-import { commonStyles } from './components/styled/common'
-
-const Title = styled('h2', {
-  ...commonStyles,
-  fontSize: 24,
-  color: '#00CCCC',
-})
-
-const P = styled('p', {
-  ...commonStyles,
-  color: '#000',
-})
+import { H2, P } from './components/styled/typography'
 
 export type ManagerPropsType = {}
 
 const Manager: FC<ManagerPropsType> = () => {
-  const { translations } = useTranslator()
+  const { translations: t } = useTranslator()
   return (
     <>
-      <Title>{translations.applicationTitle}</Title>
-      <P>{translations.welcomeText}</P>
+      <H2>{t.applicationTitle}</H2>
+      <P>{t.welcomeText}</P>
       <LanguageSwitcher />
     </>
   )

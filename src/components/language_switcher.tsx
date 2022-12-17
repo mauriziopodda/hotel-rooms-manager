@@ -7,10 +7,10 @@ export const LanguageSwitcher = () => {
   return (
     <>
       {locale !== 'it-IT' && (
-        <Button onClick={() => setLocale('it-IT')}>Versione Italiana</Button>
+        <Button onClick={() => setLocale('it-IT')}>Italiano</Button>
       )}
       {locale !== 'en-US' && (
-        <Button onClick={() => setLocale('en-US')}>English Version</Button>
+        <Button onClick={() => setLocale('en-US')}>English</Button>
       )}
     </>
   )
