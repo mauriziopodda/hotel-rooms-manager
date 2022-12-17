@@ -6,6 +6,7 @@ Uses:
 
 - `vite` as server
 - `jotai` for state management that avoids re-rendering and complex use of multiple contexts
+- `axios` for data fetching
 - `zod` as validator
 - `stitches` for styling
 - `eslint` and `prettier` for code linting
