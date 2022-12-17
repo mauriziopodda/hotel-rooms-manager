@@ -9,16 +9,14 @@ type FloorDividerPropsType = {
 export const FloorContainer = styled('div', {
   ...commonStyles,
   display: 'flex',
+  position: 'relative',
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  justifyContent: 'flex-start',
   alignItems: 'center',
   backgroundColor: '#e6f9fa',
   borderRadius: 8,
   padding: 10,
-
-  '& + &': {
-    marginTop: 16,
-  },
+  marginTop: 16,
 })
 
 export const Floor: FC<FloorDividerPropsType> = ({ children }) => {

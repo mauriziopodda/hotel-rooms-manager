@@ -24,6 +24,9 @@ const RoomNumberIcon = styled('div', {
   minWidth: 36,
   height: 36,
   maxHeight: 36,
+  marginRight: 18,
+  marginTop: 4,
+  marginBottom: 4,
   '-webkit-user-select': 'none' /* Safari */,
   '-ms-user-select': 'none' /* IE 10 and IE 11 */,
   userSelect: 'none' /* Standard syntax */,
@@ -44,6 +47,8 @@ const RoomNumberIcon = styled('div', {
     fontSize: 18,
     lineHeight: '24px',
   },
+
+  '& + &': {},
 })
 
 const RoomAvailabilityIcon = styled('div', {
@@ -59,6 +64,9 @@ const RoomAvailabilityIcon = styled('div', {
     availability: {
       available: {
         backgroundColor: palette.availablity.available,
+      },
+      partiallyAvailable: {
+        backgroundColor: palette.availablity.partiallyAvailable,
       },
       unavailable: {
         backgroundColor: palette.availablity.unavailable,
@@ -76,12 +84,10 @@ export const RoomsListItem: FC<RoomsListItemType> = ({ room }) => {
     roomId: room.id,
   })
   return (
-    <>
-      <RoomNumberIcon>
-        <div className="room-label">{t.room}</div>
-        <div className="room-number">{room.number}</div>
-        <RoomAvailabilityIcon availability={reservationStatus} />
-      </RoomNumberIcon>
-    </>
+    <RoomNumberIcon>
+      <div className="room-label">{t.room}</div>
+      <div className="room-number">{room.number}</div>
+      <RoomAvailabilityIcon availability={reservationStatus} />
+    </RoomNumberIcon>
   )
 }

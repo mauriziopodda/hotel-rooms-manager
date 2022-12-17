@@ -12,6 +12,7 @@ export type DateFormatsType = z.infer<typeof possibleDateFormats>
 const managerConfigurationValidator = z.object({
   defaultLocale: availableLocales,
   defaultDateFormat: possibleDateFormats,
+  partiallyAvailableLimit: z.number().min(0),
   preferredDateFormat: z.array(
     z.object({
       locale: availableLocales,
@@ -29,6 +30,7 @@ export type preferredDatesFormats = {
 export const managerConfig: ManagerConfigType = {
   defaultLocale: 'en-US',
   defaultDateFormat: 'ddd DD, MMM YYYY',
+  partiallyAvailableLimit: 3,
   preferredDateFormat: [
     { locale: 'en-US', preferredDateFormat: 'ddd DD, MMM YYYY' },
     { locale: 'it-IT', preferredDateFormat: 'DD/MM/YYYY' },

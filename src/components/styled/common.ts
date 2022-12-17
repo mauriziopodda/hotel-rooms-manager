@@ -3,6 +3,7 @@ type ColorsPaletteType = {
   primaryHover: string
   availablity: {
     available: string
+    partiallyAvailable: string
     unavailable: string
     unknown: string
   }
@@ -13,6 +14,7 @@ export const palette: ColorsPaletteType = {
   primaryHover: '#00b3b3',
   availablity: {
     available: '#6eff5e',
+    partiallyAvailable: '#FFBF00',
     unavailable: '#ff2942',
     unknown: '#EAEAEA',
   },
