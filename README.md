@@ -10,6 +10,7 @@ Uses:
 - `zod` as validator
 - `stitches` for styling
 - `eslint` and `prettier` for code linting
+- `moment` to manage the dates
 
 ## How to start the application
 
