@@ -2,10 +2,7 @@ import { useAtom } from 'jotai'
 import { useMemo } from 'react'
 import { datesFormatAtom } from '../atoms/date_format'
 import { periodAtom, PeriodType } from '../atoms/period'
-import { RoomType } from '../atoms/rooms'
 import { DateFormatsType } from '../manager.config'
-
-type RoomFiltersType = Partial<Pick<RoomType, 'floor' | 'number' | 'cleaned'>>
 
 const usePeriod = () => {
   const [period, setPeriod] = useAtom(periodAtom)
