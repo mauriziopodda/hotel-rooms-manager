@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { RoomType } from '../atoms/rooms'
 import useTranslator from '../hooks/useTranslator'
 import { palette, styled } from './styled/common'
-
+import StarIcon from '../assets/images/star.svg'
 type RoomsListItemType = {
   room: RoomType
 }
@@ -58,11 +58,14 @@ const RoomNumberIcon = styled('div', {
 
         '&::after': {
           position: 'absolute',
-          content: '\u2B50',
+          content: '',
           left: 48,
           top: -5,
           width: 14,
           height: 14,
+          maskImage: `url(${StarIcon})`,
+          maskSize: '14px 14px',
+          backgroundColor: palette.room.isSuiteStar,
           textAlign: 'center',
           fontSize: 14,
           lineHeight: '14px',

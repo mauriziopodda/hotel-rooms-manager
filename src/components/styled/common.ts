@@ -5,6 +5,7 @@ type ColorsPaletteType = {
   primaryLight: string
   primaryDark: string
   room: {
+    isSuiteStar: string
     isSuiteBorder: string
   }
   availablity: {
@@ -28,7 +29,8 @@ export const palette: ColorsPaletteType = {
   primaryLight: '#e6f9fa',
   primaryDark: '#00b3b3',
   room: {
-    isSuiteBorder: '#dab238',
+    isSuiteBorder: '#ffd863',
+    isSuiteStar: '#f5b801',
   },
   availablity: {
     available: '#6eff5e',
