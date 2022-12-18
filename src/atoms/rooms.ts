@@ -1,6 +1,6 @@
 import { atom } from 'jotai'
 import { z } from 'zod'
-import { RoomReservationStatusType } from '../hooks/useReservation'
+import { RoomReservationStatusType } from '../hooks/useRooms'
 import { PeriodType } from './period'
 
 export const availableAmenities = z.union([

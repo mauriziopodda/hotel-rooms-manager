@@ -1,19 +1,71 @@
 import { useAtom, useAtomValue } from 'jotai'
+import moment from 'moment'
 import { useEffect, useMemo } from 'react'
-import { periodAtom } from '../atoms/period'
+import { periodAtom, PeriodType } from '../atoms/period'
 import { roomsAtom, RoomType } from '../atoms/rooms'
 import { getRooms } from '../services/rooms'
+import { enumerateDaysBetweenDates } from '../utilities/dates'
 import genericSearch from '../utilities/generic_search'
 import genericSort from '../utilities/generic_sort'
-import useReservation, {
-  calculateOccupacyDates,
-  calculateReservationStatus,
-  RoomReservationStatusType,
-} from './useReservation'
+
+export type RoomReservationStatusType =
+  | 'available'
+  | 'unavailable'
+  | 'partiallyAvailable'
+  | 'unknown'
 
 export type RoomFiltersType = Partial<
   Pick<RoomType, 'id' | 'floor' | 'number' | 'cleaned'>
 >
+
+const filterOccupancyByPeriod = (
+  occupancy: string[],
+  datesInPeriod: string[]
+) =>
+  occupancy.filter(
+    (date) =>
+      moment(date) >= moment(datesInPeriod[0]) &&
+      moment(date) <= moment(datesInPeriod[datesInPeriod.length - 1])
+  )
+
+export const calculateReservationStatus = (
+  period: PeriodType,
+  room: RoomType
+): RoomReservationStatusType => {
+  const occupancy: string[] = calculateOccupacyDates(room)
+
+  const allDatesOfThePeriod = enumerateDaysBetweenDates(
+    period.start,
+    period.end
+  )
+
+  const occupancyInThePeriod = filterOccupancyByPeriod(
+    occupancy,
+    allDatesOfThePeriod
+  )
+
+  return allDatesOfThePeriod && allDatesOfThePeriod.length > 0 && occupancy
+    ? occupancyInThePeriod.some((date) => allDatesOfThePeriod.includes(date))
+      ? occupancyInThePeriod.filter((date) =>
+          allDatesOfThePeriod.includes(date)
+        ).length === allDatesOfThePeriod.length
+        ? 'unavailable'
+        : 'partiallyAvailable'
+      : 'available'
+    : 'unknown'
+}
+
+export const calculateOccupacyDates = (selectedRoom: RoomType | undefined) => {
+  const occupancyDates: string[] = []
+  selectedRoom?.occupancy?.map((occupacyPeriods) => {
+    const datesInBetween = enumerateDaysBetweenDates(
+      occupacyPeriods.start,
+      occupacyPeriods.end
+    )
+    datesInBetween.map((date) => occupancyDates.push(date))
+  })
+  return occupancyDates
+}
 
 const useRooms = (options?: {
   filters?: RoomFiltersType
@@ -35,9 +87,8 @@ const useRooms = (options?: {
         setRooms(
           rooms
             .filter((room) => {
-              const occupancy: string[] = calculateOccupacyDates(room)
               const roomReservationStatus: RoomReservationStatusType =
-                calculateReservationStatus(period, occupancy)
+                calculateReservationStatus(period, room)
               room.reservationStatus = roomReservationStatus
               return (options?.reservationStatus &&
                 roomReservationStatus === options?.reservationStatus) ||
