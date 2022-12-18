@@ -5,8 +5,10 @@ import { PeriodType } from './period'
 
 export const roomSizeTypes = z.union([
   z.literal('double'),
+  z.literal('doublePlusSingle'),
   z.literal('triple'),
   z.literal('single'),
+  z.literal('twin'),
 ])
 
 export type RoomSizeType = z.infer<typeof roomSizeTypes>
