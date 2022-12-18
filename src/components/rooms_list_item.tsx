@@ -40,11 +40,16 @@ const RoomNumberIcon = styled('div', {
   height: 36,
   maxHeight: 36,
   marginRight: 18,
-  marginTop: 4,
-  marginBottom: 4,
+  marginTop: 12,
+  marginBottom: 12,
   '-webkit-user-select': 'none' /* Safari */,
   '-ms-user-select': 'none' /* IE 10 and IE 11 */,
   userSelect: 'none' /* Standard syntax */,
+
+  '@sm': {
+    marginTop: 16,
+    marginBottom: 16,
+  },
 
   '&:hover': {
     backgroundColor: palette.primary,
