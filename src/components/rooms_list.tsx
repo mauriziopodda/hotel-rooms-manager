@@ -1,10 +1,10 @@
-import { styled } from '@stitches/react'
 import React, { FC } from 'react'
 import { RoomType } from '../atoms/rooms'
 import useRooms, { RoomReservationStatusType } from '../hooks/useRooms'
 import useTranslator from '../hooks/useTranslator'
 import { Floor } from './floor'
 import { RoomsListItem } from './rooms_list_item'
+import { styled } from './styled/common'
 import { H3 } from './styled/typography'
 
 type RoomsListPropsType = {
@@ -24,8 +24,11 @@ const FloorName = styled(H3, {
 const RoomsContainer = styled('div', {
   display: 'flex',
   position: 'relative',
-  width: '100%',
   flexWrap: 'wrap',
+
+  '@sm': {
+    justifyContent: 'center',
+  },
 })
 
 export const RoomsList: FC<RoomsListPropsType> = ({

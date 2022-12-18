@@ -1,5 +1,4 @@
-import { styled } from '@stitches/react'
-import { commonStyles, palette } from './common'
+import { commonStyles, palette, styled } from './common'
 
 /** HEADERS */
 

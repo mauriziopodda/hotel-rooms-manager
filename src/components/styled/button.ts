@@ -1,5 +1,4 @@
-import { styled } from '@stitches/react'
-import { commonStyles } from './common'
+import { commonStyles, styled } from './common'
 
 export const Button = styled('button', {
   ...commonStyles,

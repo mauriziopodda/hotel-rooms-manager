@@ -1,8 +1,7 @@
-import { styled } from '@stitches/react'
 import React, { FC } from 'react'
 import { RoomType } from '../atoms/rooms'
 import useTranslator from '../hooks/useTranslator'
-import { palette } from './styled/common'
+import { palette, styled } from './styled/common'
 
 type RoomsListItemType = {
   room: RoomType
