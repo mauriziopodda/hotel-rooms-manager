@@ -1,4 +1,6 @@
-import React, { FC } from 'react'
+import { useAtomValue } from 'jotai'
+import React, { FC, useEffect } from 'react'
+import { periodAtom } from '../atoms/period'
 import { RoomType } from '../atoms/rooms'
 import useRooms, { RoomReservationStatusType } from '../hooks/useRooms'
 import useTranslator from '../hooks/useTranslator'
@@ -44,6 +46,7 @@ export const RoomsList: FC<RoomsListPropsType> = ({
       : undefined
   )
   const { translations: t } = useTranslator()
+
   return (
     <>
       {floors.map((floor) => {

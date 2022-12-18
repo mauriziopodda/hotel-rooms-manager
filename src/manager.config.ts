@@ -4,8 +4,8 @@ const availableLocales = z.union([z.literal('en-US'), z.literal('it-IT')])
 export type LocalesType = z.infer<typeof availableLocales>
 
 const possibleDateFormats = z.union([
-  z.literal('DD/MM/YYYY'),
-  z.literal('ddd DD, MMM YYYY'),
+  z.literal('dd/MM/yyyy'),
+  z.literal('MM/dd/yyyy'),
 ])
 export type DateFormatsType = z.infer<typeof possibleDateFormats>
 
@@ -29,10 +29,10 @@ export type preferredDatesFormats = {
 
 export const managerConfig: ManagerConfigType = {
   defaultLocale: 'en-US',
-  defaultDateFormat: 'ddd DD, MMM YYYY',
+  defaultDateFormat: 'MM/dd/yyyy',
   partiallyAvailableLimit: 3,
   preferredDateFormat: [
-    { locale: 'en-US', preferredDateFormat: 'ddd DD, MMM YYYY' },
-    { locale: 'it-IT', preferredDateFormat: 'DD/MM/YYYY' },
+    { locale: 'en-US', preferredDateFormat: 'MM/dd/yyyy' },
+    { locale: 'it-IT', preferredDateFormat: 'dd/MM/yyyy' },
   ],
 }

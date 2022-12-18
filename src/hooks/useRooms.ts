@@ -101,7 +101,7 @@ const useRooms = (options?: {
         console.log('Error occured when fetching rooms')
       }
     })()
-  }, [])
+  }, [period, calculateReservationStatus, genericSearch, genericSort])
 
   return {
     floors,

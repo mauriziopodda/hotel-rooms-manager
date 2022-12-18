@@ -10,6 +10,6 @@ export const periodAtom = atom<PeriodType>(
     ? (JSON.parse(sessionPeriod) as PeriodType)
     : {
         start: moment(new Date()).format('YYYY-MM-DD'),
-        end: moment(new Date()).add(7, 'days').format('YYYY-MM-DD'),
+        end: moment(new Date()).add(1, 'days').format('YYYY-MM-DD'),
       }
 )
