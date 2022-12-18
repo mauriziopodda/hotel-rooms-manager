@@ -19,4 +19,5 @@ export const H3 = styled('h3', {
 export const P = styled('div', {
   ...commonStyles,
   color: '#000',
+  marginBottom: 16,
 })
