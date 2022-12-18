@@ -1,5 +1,6 @@
 import { atom } from 'jotai'
 import { z } from 'zod'
+import { RoomReservationStatusType } from '../hooks/useReservation'
 import { PeriodType } from './period'
 
 export const availableAmenities = z.union([
@@ -18,6 +19,7 @@ export type RoomType = {
   area: number
   amenities: AmenitiesType[]
   occupancy: PeriodType[] | null
+  reservationStatus: RoomReservationStatusType | null
 }
 
 export const roomsAtom = atom<RoomType[]>([] as RoomType[])

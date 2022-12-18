@@ -1,11 +1,12 @@
 import { useAtomValue } from 'jotai'
 import moment from 'moment'
+import { PeriodType } from '../atoms/date_format'
 import { periodAtom } from '../atoms/period'
 import { roomsAtom, RoomType } from '../atoms/rooms'
 import { managerConfig } from '../manager.config'
 import { enumerateDaysBetweenDates } from '../utilities/dates'
 
-export type RoomReservationStatus =
+export type RoomReservationStatusType =
   | 'available'
   | 'unavailable'
   | 'partiallyAvailable'
@@ -21,20 +22,10 @@ const filterOccupancyByPeriod = (
       moment(date) <= moment(datesInPeriod[datesInPeriod.length - 1])
   )
 
-const useReservation = (options: { roomId: RoomType['id'] }) => {
-  const period = useAtomValue(periodAtom)
-  const rooms = useAtomValue(roomsAtom)
-  const selectedRoom = rooms.find((room) => room.id === options.roomId)
-
-  const occupancy: string[] = []
-  selectedRoom?.occupancy?.map((occupacyPeriods) => {
-    const datesInBetween = enumerateDaysBetweenDates(
-      occupacyPeriods.start,
-      occupacyPeriods.end
-    )
-    datesInBetween.map((date) => occupancy.push(date))
-  })
-
+export const calculateReservationStatus = (
+  period: PeriodType,
+  occupancy: string[]
+): RoomReservationStatusType => {
   const allDatesOfThePeriod = enumerateDaysBetweenDates(
     period.start,
     period.end
@@ -45,21 +36,37 @@ const useReservation = (options: { roomId: RoomType['id'] }) => {
     allDatesOfThePeriod
   )
 
-  const reservationStatus: RoomReservationStatus =
-    allDatesOfThePeriod && allDatesOfThePeriod.length > 0 && occupancy
-      ? occupancyInThePeriod.some((date) => allDatesOfThePeriod.includes(date))
-        ? occupancyInThePeriod.filter((date) =>
-            allDatesOfThePeriod.includes(date)
-          ).length === allDatesOfThePeriod.length
-          ? 'unavailable'
-          : 'partiallyAvailable'
-        : 'available'
-      : 'unknown'
+  return allDatesOfThePeriod && allDatesOfThePeriod.length > 0 && occupancy
+    ? occupancyInThePeriod.some((date) => allDatesOfThePeriod.includes(date))
+      ? occupancyInThePeriod.filter((date) =>
+          allDatesOfThePeriod.includes(date)
+        ).length === allDatesOfThePeriod.length
+        ? 'unavailable'
+        : 'partiallyAvailable'
+      : 'available'
+    : 'unknown'
+}
+
+export const calculateOccupacyDates = (selectedRoom: RoomType | undefined) => {
+  const occupancyDates: string[] = []
+  selectedRoom?.occupancy?.map((occupacyPeriods) => {
+    const datesInBetween = enumerateDaysBetweenDates(
+      occupacyPeriods.start,
+      occupacyPeriods.end
+    )
+    datesInBetween.map((date) => occupancyDates.push(date))
+  })
+  return occupancyDates
+}
+
+const useReservation = (options: { roomId: RoomType['id'] }) => {
+  const rooms = useAtomValue(roomsAtom)
+
+  const selectedRoom = rooms.find((room) => room.id === options.roomId)
+  const occupancy: string[] = calculateOccupacyDates(selectedRoom)
 
   return {
     occupancy,
-    occupancyInThePeriod,
-    reservationStatus,
     selectedRoom,
   }
 }

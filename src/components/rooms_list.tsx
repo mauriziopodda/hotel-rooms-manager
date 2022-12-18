@@ -1,6 +1,7 @@
 import { styled } from '@stitches/react'
 import React, { FC } from 'react'
 import { RoomType } from '../atoms/rooms'
+import { RoomReservationStatusType } from '../hooks/useReservation'
 import useRooms from '../hooks/useRooms'
 import useTranslator from '../hooks/useTranslator'
 import { Floor } from './floor'
@@ -9,6 +10,7 @@ import { H3 } from './styled/typography'
 
 type RoomsListPropsType = {
   floor?: RoomType['number'] | null
+  reservationStatus?: RoomReservationStatusType | null
 }
 
 const FloorName = styled(H3, {
@@ -27,8 +29,18 @@ const RoomsContainer = styled('div', {
   flexWrap: 'wrap',
 })
 
-export const RoomsList: FC<RoomsListPropsType> = ({ floor }) => {
-  const { rooms, floors } = useRooms(floor ? { floor: floor } : undefined)
+export const RoomsList: FC<RoomsListPropsType> = ({
+  floor,
+  reservationStatus,
+}) => {
+  const { rooms, floors } = useRooms(
+    floor || reservationStatus
+      ? {
+          filters: { floor: floor ?? undefined },
+          reservationStatus: reservationStatus ?? undefined,
+        }
+      : undefined
+  )
   const { translations: t } = useTranslator()
   return (
     <>

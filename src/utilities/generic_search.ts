@@ -7,14 +7,16 @@ export default function genericSearch<T>(
       const objectValue = object[filter as keyof T]
       const filterValue = filters[filter as keyof T]
 
-      if (
-        (typeof objectValue === 'string' || typeof objectValue === 'number') &&
-        (typeof filterValue === 'string' || typeof filterValue === 'number')
-      ) {
-        return objectValue.toString().includes(filterValue.toString())
+      if (filterValue) {
+        if (
+          (typeof objectValue === 'string' ||
+            typeof objectValue === 'number') &&
+          (typeof filterValue === 'string' || typeof filterValue === 'number')
+        ) {
+          return objectValue.toString().includes(filterValue.toString())
+        }
       }
-
-      return false
+      return true
     })
   }
   return true

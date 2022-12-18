@@ -1,7 +1,6 @@
 import { styled } from '@stitches/react'
 import React, { FC } from 'react'
 import { RoomType } from '../atoms/rooms'
-import useReservation from '../hooks/useReservation'
 import useTranslator from '../hooks/useTranslator'
 import { palette } from './styled/common'
 
@@ -80,14 +79,13 @@ const RoomAvailabilityIcon = styled('div', {
 
 export const RoomsListItem: FC<RoomsListItemType> = ({ room }) => {
   const { translations: t } = useTranslator()
-  const { reservationStatus } = useReservation({
-    roomId: room.id,
-  })
   return (
     <RoomNumberIcon>
       <div className="room-label">{t.room}</div>
       <div className="room-number">{room.number}</div>
-      <RoomAvailabilityIcon availability={reservationStatus} />
+      <RoomAvailabilityIcon
+        availability={room.reservationStatus ?? 'unknown'}
+      />
     </RoomNumberIcon>
   )
 }

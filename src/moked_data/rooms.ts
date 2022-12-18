@@ -8,6 +8,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 35,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: [{ start: '2022-12-23', end: '2022-12-31' }],
   },
   {
@@ -17,6 +18,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 48,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: [{ start: '2022-12-01', end: '2022-12-31' }],
   },
   {
@@ -26,15 +28,17 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 29,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
-  /*{
+  {
     id: 'db6333e3-b610-45eb-bc44-6711c1c5c7b1',
     floor: 1,
     number: 13,
     cleaned: false,
     area: 28,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: [{ start: '2022-12-01', end: '2022-12-31' }],
   },
   {
@@ -44,8 +48,9 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 35,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
-  },*/
+  },
   {
     id: 'e29c830f-75d9-492b-b96b-1550d9b187a2',
     floor: 1,
@@ -53,6 +58,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 21,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -62,6 +68,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 49,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -71,6 +78,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 31,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -80,6 +88,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 18,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -89,6 +98,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 37,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -98,6 +108,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 41,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -107,6 +118,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 43,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -116,6 +128,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 41,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -125,6 +138,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 30,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: [
       { start: '2023-01-15', end: '2023-01-18' },
       { start: '2023-02-14', end: '2023-02-15' },
@@ -137,6 +151,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 33,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -146,6 +161,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 35,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -155,6 +171,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 38,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -164,6 +181,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 27,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -173,6 +191,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 32,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -182,6 +201,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 34,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: [{ start: '2022-12-01', end: '2022-12-31' }],
   },
   {
@@ -191,6 +211,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 25,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -200,6 +221,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 17,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -209,6 +231,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 15,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -218,6 +241,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 17,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -227,6 +251,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 37,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -236,6 +261,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 41,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -245,6 +271,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 40,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -254,6 +281,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 21,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -263,6 +291,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 17,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -272,6 +301,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 16,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -281,6 +311,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 36,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -290,6 +321,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 20,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -299,6 +331,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 47,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -308,6 +341,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 20,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -317,6 +351,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 48,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -326,6 +361,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 40,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -335,6 +371,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 17,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -344,6 +381,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 28,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -353,6 +391,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 21,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -362,6 +401,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 43,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -371,6 +411,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 40,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -380,6 +421,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 37,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -389,6 +431,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 35,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -398,6 +441,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 18,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -407,6 +451,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 15,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -416,6 +461,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 15,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -425,6 +471,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 28,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -434,6 +481,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 21,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -443,6 +491,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 15,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -452,6 +501,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 36,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: [{ start: '2022-12-01', end: '2022-12-31' }],
   },
   {
@@ -461,6 +511,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 39,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -470,6 +521,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 19,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -479,6 +531,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 36,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -488,6 +541,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 45,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -497,6 +551,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 36,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -506,6 +561,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 18,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -515,6 +571,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 21,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -524,6 +581,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 20,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -533,6 +591,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 49,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -542,6 +601,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 47,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -551,6 +611,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 16,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -560,6 +621,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 49,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: [{ start: '2022-12-01', end: '2022-12-31' }],
   },
   {
@@ -569,6 +631,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 48,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -578,6 +641,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 15,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -587,6 +651,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 18,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -596,6 +661,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 49,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -605,6 +671,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 24,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -614,6 +681,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 49,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -623,6 +691,7 @@ export const rooms: RoomType[] = [
     cleaned: true,
     area: 37,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
   {
@@ -632,6 +701,7 @@ export const rooms: RoomType[] = [
     cleaned: false,
     area: 23,
     amenities: ['frige', 'hair dryer', 'tv'],
+    reservationStatus: null,
     occupancy: null,
   },
 ]
