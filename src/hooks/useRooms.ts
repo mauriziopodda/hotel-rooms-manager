@@ -87,11 +87,9 @@ const useRooms = (options?: {
         setRooms(
           rooms
             .filter((room) => {
-              const roomReservationStatus: RoomReservationStatusType =
-                calculateReservationStatus(period, room)
-              room.reservationStatus = roomReservationStatus
+              room.reservationStatus = calculateReservationStatus(period, room)
               return (options?.reservationStatus &&
-                roomReservationStatus === options?.reservationStatus) ||
+                room.reservationStatus === options?.reservationStatus) ||
                 !options?.reservationStatus
                 ? room
                 : false

@@ -47,17 +47,40 @@ const RoomNumberIcon = styled('div', {
     lineHeight: '24px',
   },
 
-  '& + &': {},
+  variants: {
+    isSuite: {
+      true: {
+        border: `1px solid ${palette.room.isSuiteBorder}`,
+
+        '&:hover': {
+          backgroundColor: palette.room.isSuiteBorder,
+          color: '#fff',
+        },
+
+        '&::after': {
+          position: 'absolute',
+          content: '\u2B50',
+          left: 48,
+          top: -5,
+          width: 14,
+          height: 14,
+          textAlign: 'center',
+          fontSize: 14,
+          lineHeight: '14px',
+        },
+      },
+    },
+  },
 })
 
 const RoomAvailabilityIcon = styled('div', {
   display: 'flex',
   position: 'absolute',
   borderRadius: '50%',
-  left: 43,
-  top: 33,
-  height: 9,
-  width: 9,
+  left: 45,
+  top: 35,
+  height: 7,
+  width: 7,
 
   variants: {
     availability: {
@@ -80,7 +103,7 @@ const RoomAvailabilityIcon = styled('div', {
 export const RoomsListItem: FC<RoomsListItemType> = ({ room }) => {
   const { translations: t } = useTranslator()
   return (
-    <RoomNumberIcon>
+    <RoomNumberIcon isSuite={room.isSuite}>
       <div className="room-label">{t.room}</div>
       <div className="room-number">{room.number}</div>
       <RoomAvailabilityIcon

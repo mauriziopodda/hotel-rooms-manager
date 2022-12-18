@@ -18,6 +18,7 @@ export type RoomType = {
   cleaned: boolean
   area: number
   amenities: AmenitiesType[]
+  isSuite: boolean
   occupancy: PeriodType[] | null
   reservationStatus: RoomReservationStatusType | null
 }

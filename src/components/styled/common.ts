@@ -1,6 +1,9 @@
 type ColorsPaletteType = {
   primary: string
   primaryHover: string
+  room: {
+    isSuiteBorder: string
+  }
   availablity: {
     available: string
     partiallyAvailable: string
@@ -12,6 +15,9 @@ type ColorsPaletteType = {
 export const palette: ColorsPaletteType = {
   primary: '#00CCCC',
   primaryHover: '#00b3b3',
+  room: {
+    isSuiteBorder: '#dab238',
+  },
   availablity: {
     available: '#6eff5e',
     partiallyAvailable: '#FFBF00',
