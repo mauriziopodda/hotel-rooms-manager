@@ -64,6 +64,26 @@ const RoomNumberIcon = styled('div', {
   },
 
   variants: {
+    availability: {
+      available: {},
+      partiallyAvailable: {},
+      unavailable: {
+        border: `1px solid ${palette.primaryLight}`,
+
+        '& > div.room-label': {
+          opacity: 0.4,
+        },
+
+        '& > div.room-number': {
+          opacity: 0.4,
+        },
+
+        '&::before': {
+          opacity: 0.4,
+        },
+      },
+      unknown: {},
+    },
     roomSize: {
       double: {
         '&::before': {
@@ -168,7 +188,11 @@ const RoomAvailabilityIcon = styled('div', {
 export const RoomsListItem: FC<RoomsListItemType> = ({ room }) => {
   const { translations: t } = useTranslator()
   return (
-    <RoomNumberIcon isSuite={room.isSuite} roomSize={room.size}>
+    <RoomNumberIcon
+      isSuite={room.isSuite}
+      roomSize={room.size}
+      availability={room.reservationStatus ?? 'unknown'}
+    >
       <div className="room-label">{t.room}</div>
       <div className="room-number">{room.number}</div>
       <RoomAvailabilityIcon
