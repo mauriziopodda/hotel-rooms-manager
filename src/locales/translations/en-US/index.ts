@@ -1,4 +1,4 @@
-import { TranslationsConfigType } from '../../../atoms/translations'
+import type { TranslationsConfigType } from '../../../atoms/translations'
 
 export const managerTranslations: TranslationsConfigType = {
   applicationTitle: 'Hotel Rooms Manager',

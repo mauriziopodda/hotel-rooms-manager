@@ -1,13 +1,16 @@
-import React, { FC } from 'react'
-import { RoomType } from '../atoms/rooms'
-import useTranslator from '../hooks/useTranslator'
-import { palette, styled } from './styled/common'
-import IconBedDouble from '../assets/images/bed-double.svg'
 import IconBedDoublePlusSingle from '../assets/images/bed-double-plus-single.svg'
+import IconBedDouble from '../assets/images/bed-double.svg'
+import IconBedSingle from '../assets/images/bed-single.svg'
 import IconBedTriple from '../assets/images/bed-triple.svg'
 import IconBedTwin from '../assets/images/bed-twin.svg.svg'
-import IconBedSingle from '../assets/images/bed-single.svg'
 import IconStar from '../assets/images/star.svg'
+import useTranslator from '../hooks/use_translator'
+import { palette, styled } from './styled/common'
+import React from 'react'
+
+import type { RoomType } from '../atoms/rooms'
+import type { FC } from 'react'
+
 type RoomsListItemType = {
   room: RoomType
 }
@@ -192,11 +195,12 @@ const RoomAvailabilityIcon = styled('div', {
 
 export const RoomsListItem: FC<RoomsListItemType> = ({ room }) => {
   const { translations: t } = useTranslator()
+
   return (
     <RoomNumberIcon
+      availability={room.reservationStatus ?? 'unknown'}
       isSuite={room.isSuite}
       roomSize={room.size}
-      availability={room.reservationStatus ?? 'unknown'}
     >
       <div className="room-label">{t.room}</div>
       <div className="room-number">{room.number}</div>

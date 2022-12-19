@@ -1,8 +1,10 @@
+import { datesFormatAtom } from '../atoms/date_format'
+import { periodAtom } from '../atoms/period'
 import { useAtom } from 'jotai'
 import { useMemo } from 'react'
-import { datesFormatAtom } from '../atoms/date_format'
-import { periodAtom, PeriodType } from '../atoms/period'
-import { DateFormatsType } from '../manager.config'
+
+import type { PeriodType } from '../atoms/period'
+import type { DateFormatsType } from '../manager.config'
 
 const usePeriod = () => {
   const [period, setPeriod] = useAtom(periodAtom)

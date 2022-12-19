@@ -1,18 +1,18 @@
 import { createStitches } from '@stitches/react'
 
 type ColorsPaletteType = {
-  primary: string
-  primaryLight: string
-  primaryDark: string
-  room: {
-    isSuiteStar: string
-    isSuiteBorder: string
-  }
   availablity: {
     available: string
     partiallyAvailable: string
     unavailable: string
     unknown: string
+  }
+  primary: string
+  primaryDark: string
+  primaryLight: string
+  room: {
+    isSuiteBorder: string
+    isSuiteStar: string
   }
 }
 

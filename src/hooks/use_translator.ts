@@ -1,8 +1,9 @@
-import { useAtom } from 'jotai'
-import { useEffect, useMemo } from 'react'
 import { localeAtom } from '../atoms/locale'
 import { translationsAtom } from '../atoms/translations'
-import { LocalesType } from '../manager.config'
+import { useAtom } from 'jotai'
+import { useEffect, useMemo } from 'react'
+
+import type { LocalesType } from '../manager.config'
 
 const useTranslator = () => {
   const [locale, setLocale] = useAtom(localeAtom)
@@ -16,17 +17,20 @@ const useTranslator = () => {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line padding-line-between-statements
     ;(async () => {
       try {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const { managerTranslations } = await import(
           `../locales/translations/${locale}/index`
         )
+
         setTranslations(managerTranslations)
-      } catch (err) {
+      } catch {
         console.log('Error occured using translations')
       }
     })()
-  }, [locale])
+  }, [locale, setTranslations])
 
   return {
     locale,

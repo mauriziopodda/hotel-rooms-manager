@@ -1,5 +1,7 @@
+import { managerConfig } from '../manager.config'
 import { atom } from 'jotai'
-import { DateFormatsType, managerConfig } from '../manager.config'
+
+import type { DateFormatsType } from '../manager.config'
 
 export type PeriodType = { start: string; end: string }
 

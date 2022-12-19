@@ -1,12 +1,15 @@
-import React, { FC } from 'react'
-import useTranslator from './hooks/useTranslator'
 import { LanguageSwitcher } from './components/language_switcher'
-import { H2, P } from './components/styled/typography'
 import { PeriodSelector } from './components/period_selector'
 import { RoomsList } from './components/rooms_list'
 import { styled } from './components/styled/common'
+import { H2, P } from './components/styled/typography'
+import useTranslator from './hooks/use_translator'
+import React from 'react'
 
-export type ManagerPropsType = {}
+import type { FC } from 'react'
+
+// TODO: add comments for everything
+// TODO: configure ts
 
 const Application = styled('div', {
   padding: 30,
@@ -16,7 +19,7 @@ const Application = styled('div', {
   },
 })
 
-const Manager: FC<ManagerPropsType> = () => {
+const Manager: FC = () => {
   const { translations: t } = useTranslator()
 
   return (

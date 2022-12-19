@@ -1,5 +1,7 @@
-import React, { FC } from 'react'
 import { commonStyles, palette, styled } from './styled/common'
+import React from 'react'
+
+import type { FC } from 'react'
 
 type FloorDividerPropsType = {
   children: React.ReactNode

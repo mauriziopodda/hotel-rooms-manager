@@ -4,14 +4,14 @@ export const enumerateDaysBetweenDates = (
   startDate: string,
   endDate: string
 ) => {
-  var dates = []
+  const dates = []
 
-  var currDate = moment(startDate).startOf('day')
-  var lastDate = moment(endDate).startOf('day')
+  const currentDate = moment(startDate).startOf('day')
+  const lastDate = moment(endDate).startOf('day')
 
-  while (currDate.diff(lastDate) < 0) {
-    dates.push(currDate.format('YYYY-MM-DD'))
-    currDate.add(1, 'days')
+  while (currentDate.diff(lastDate) < 0) {
+    dates.push(currentDate.format('YYYY-MM-DD'))
+    currentDate.add(1, 'days')
   }
 
   return dates

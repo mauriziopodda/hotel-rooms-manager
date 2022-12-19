@@ -1,10 +1,11 @@
+import { managerConfigAtom } from '../atoms/manager_config'
+import usePeriod from '../hooks/use_period'
+import useTranslator from '../hooks/use_translator'
+import { Button } from './styled/button'
 import { useAtomValue } from 'jotai'
 import React from 'react'
-import { managerConfigAtom } from '../atoms/manager_config'
-import usePeriod from '../hooks/usePeriod'
-import useTranslator from '../hooks/useTranslator'
-import { LocalesType } from '../manager.config'
-import { Button } from './styled/button'
+
+import type { LocalesType } from '../manager.config'
 
 export const LanguageSwitcher = () => {
   const { locale, setLocale } = useTranslator()
@@ -22,13 +23,26 @@ export const LanguageSwitcher = () => {
       languagePreferredDatesFormat ?? managerConfig.defaultDateFormat
     )
   }
+
   return (
     <>
       {locale !== 'it-IT' && (
-        <Button onClick={() => handleSwitchLanguage('it-IT')}>Italiano</Button>
+        <Button
+          onClick={() => {
+            handleSwitchLanguage('it-IT')
+          }}
+        >
+          Italiano
+        </Button>
       )}
       {locale !== 'en-US' && (
-        <Button onClick={() => handleSwitchLanguage('en-US')}>English</Button>
+        <Button
+          onClick={() => {
+            handleSwitchLanguage('en-US')
+          }}
+        >
+          English
+        </Button>
       )}
     </>
   )

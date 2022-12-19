@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import usePeriod from '../hooks/use_period'
+import { commonStyles, palette, styled } from './styled/common'
 import moment from 'moment'
-import usePeriod from '../hooks/usePeriod'
+import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
-import { commonStyles, palette, styled } from './styled/common'
 
 const DateRangeInput = styled('input', {
   ...commonStyles,
@@ -25,37 +25,42 @@ const DateRangeInput = styled('input', {
 export const PeriodSelector = () => {
   const { datesFormat, period, setPeriod } = usePeriod()
 
-  const [dateRange, setDateRange] = useState([
-    moment(period.start).toDate(),
-    moment(period.end).toDate(),
+  const [dateRange, setDateRange] = useState<(Date | null)[]>([
+    moment(period.start).toDate() ?? null,
+    moment(period.end).toDate() ?? null,
   ])
 
   const [startDate, endDate] = dateRange
 
-  const handleOnChange = (update: Date[]) => {
-    const start = moment(update[0]).format('YYYY-MM-DD')
-    const end =
-      update[1] && update[1] > update[0]
-        ? moment(update[1]).format('YYYY-MM-DD')
-        : moment(update[0]).format('YYYY-MM-DD')
-    setPeriod({
-      start,
-      end,
-    })
-    setDateRange(update)
+  const handleOnChange = (update: (Date | null)[]) => {
+    if (update?.[0]) {
+      const start = moment(update[0]).format('YYYY-MM-DD')
+
+      const end =
+        update[1] && update[1] > update[0]
+          ? moment(update[1]).format('YYYY-MM-DD')
+          : moment(update[0]).format('YYYY-MM-DD')
+
+      setPeriod({
+        start,
+        end,
+      })
+
+      setDateRange(update)
+    }
   }
 
   return (
     <div>
       <DatePicker
-        dateFormat={datesFormat}
+        selectsRange
         customInput={<DateRangeInput />}
-        selectsRange={true}
-        startDate={startDate}
+        dateFormat={datesFormat}
         endDate={endDate}
-        minDate={new Date()}
-        onChange={handleOnChange}
         isClearable={false}
+        minDate={new Date()}
+        startDate={startDate}
+        onChange={(v) => handleOnChange(v)}
       />
     </div>
   )

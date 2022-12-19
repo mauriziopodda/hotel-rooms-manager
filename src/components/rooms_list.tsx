@@ -1,13 +1,14 @@
-import { useAtomValue } from 'jotai'
-import React, { FC, useEffect } from 'react'
-import { periodAtom } from '../atoms/period'
-import { RoomType } from '../atoms/rooms'
-import useRooms, { RoomReservationStatusType } from '../hooks/useRooms'
-import useTranslator from '../hooks/useTranslator'
+import useRooms from '../hooks/use_rooms'
+import useTranslator from '../hooks/use_translator'
 import { Floor } from './floor'
 import { RoomsListItem } from './rooms_list_item'
 import { styled } from './styled/common'
 import { H3 } from './styled/typography'
+import React from 'react'
+
+import type { RoomType } from '../atoms/rooms'
+import type { RoomReservationStatusType } from '../hooks/use_rooms'
+import type { FC } from 'react'
 
 type RoomsListPropsType = {
   floor?: RoomType['number'] | null
@@ -37,7 +38,7 @@ export const RoomsList: FC<RoomsListPropsType> = ({
   floor,
   reservationStatus,
 }) => {
-  const { rooms, floors } = useRooms(
+  const { floors, rooms } = useRooms(
     floor || reservationStatus
       ? {
           filters: { floor: floor ?? undefined },
@@ -45,6 +46,7 @@ export const RoomsList: FC<RoomsListPropsType> = ({
         }
       : undefined
   )
+
   const { translations: t } = useTranslator()
 
   return (

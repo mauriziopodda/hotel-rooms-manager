@@ -1,12 +1,14 @@
 import { z } from 'zod'
 
 const availableLocales = z.union([z.literal('en-US'), z.literal('it-IT')])
+
 export type LocalesType = z.infer<typeof availableLocales>
 
 const possibleDateFormats = z.union([
   z.literal('dd/MM/yyyy'),
   z.literal('MM/dd/yyyy'),
 ])
+
 export type DateFormatsType = z.infer<typeof possibleDateFormats>
 
 const managerConfigurationValidator = z.object({
@@ -20,6 +22,7 @@ const managerConfigurationValidator = z.object({
     })
   ),
 })
+
 export type ManagerConfigType = z.infer<typeof managerConfigurationValidator>
 
 export type preferredDatesFormats = {

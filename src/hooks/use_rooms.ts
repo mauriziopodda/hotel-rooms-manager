@@ -1,12 +1,15 @@
-import { useAtom, useAtomValue } from 'jotai'
-import moment from 'moment'
-import { useEffect, useMemo } from 'react'
-import { periodAtom, PeriodType } from '../atoms/period'
-import { roomsAtom, RoomType } from '../atoms/rooms'
+import { periodAtom } from '../atoms/period'
+import { roomsAtom } from '../atoms/rooms'
 import { getRooms } from '../services/rooms'
 import { enumerateDaysBetweenDates } from '../utilities/dates'
 import genericSearch from '../utilities/generic_search'
 import genericSort from '../utilities/generic_sort'
+import { useAtom, useAtomValue } from 'jotai'
+import moment from 'moment'
+import { useEffect, useMemo } from 'react'
+
+import type { PeriodType } from '../atoms/period'
+import type { RoomType } from '../atoms/rooms'
 
 export type RoomReservationStatusType =
   | 'available'
@@ -57,13 +60,19 @@ export const calculateReservationStatus = (
 
 export const calculateOccupacyDates = (selectedRoom: RoomType | undefined) => {
   const occupancyDates: string[] = []
-  selectedRoom?.occupancy?.map((occupacyPeriods) => {
-    const datesInBetween = enumerateDaysBetweenDates(
-      occupacyPeriods.start,
-      occupacyPeriods.end
-    )
-    datesInBetween.map((date) => occupancyDates.push(date))
-  })
+  const occupancy = selectedRoom?.occupancy
+
+  if (occupancy) {
+    for (const occupacyPeriods of occupancy) {
+      const datesInBetween = enumerateDaysBetweenDates(
+        occupacyPeriods.start,
+        occupacyPeriods.end
+      )
+
+      datesInBetween.map((date) => occupancyDates.push(date))
+    }
+  }
+
   return occupancyDates
 }
 
@@ -76,18 +85,21 @@ const useRooms = (options?: {
   const roomsMemo = useMemo(() => rooms, [rooms])
 
   const floors = useMemo(
-    () => Array.from(new Set(rooms.map((room) => room.floor))),
+    () => [...new Set(rooms.map((room) => room.floor))],
     [rooms]
   )
 
   useEffect(() => {
+    // eslint-disable-next-line padding-line-between-statements
     ;(async () => {
       try {
         const rooms = await getRooms()
+
         setRooms(
           rooms
             .filter((room) => {
               room.reservationStatus = calculateReservationStatus(period, room)
+
               return (options?.reservationStatus &&
                 room.reservationStatus === options?.reservationStatus) ||
                 !options?.reservationStatus
@@ -97,11 +109,11 @@ const useRooms = (options?: {
             .filter((room) => genericSearch(room, options?.filters))
             .sort((a, b) => genericSort(a, b, 'floor'))
         )
-      } catch (err) {
+      } catch {
         console.log('Error occured when fetching rooms')
       }
     })()
-  }, [period, calculateReservationStatus, genericSearch, genericSort])
+  }, [period, options?.filters, options?.reservationStatus, setRooms])
 
   return {
     floors,
