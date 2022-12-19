@@ -1,4 +1,4 @@
-import Manager from './Manager'
+import Manager from './manager'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
