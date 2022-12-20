@@ -1,32 +1,43 @@
+import { paletteAtom } from './atoms/palette'
+import { DisplayModeSwitcher } from './components/display_type_switcher'
 import { LanguageSwitcher } from './components/language_switcher'
 import { PeriodSelector } from './components/period_selector'
 import { RoomsList } from './components/rooms_list'
 import { styled } from './components/styled/common'
-import { H2, P } from './components/styled/typography'
+import { Typography } from './components/styled/typography'
 import useTranslator from './hooks/use_translator'
-import React from 'react'
+import { useAtomValue } from 'jotai'
+import React, { useMemo } from 'react'
 
 import type { FC } from 'react'
 
 // TODO: add comments for everything
-// TODO: configure ts
-
-const Application = styled('div', {
-  padding: 30,
-
-  '@sm': {
-    padding: 5,
-  },
-})
+// TODO: improve translations
+// TODO: improve type of translations
 
 const Manager: FC = () => {
   const { translations: t } = useTranslator()
 
+  const palette = useAtomValue(paletteAtom)
+
+  const Application = useMemo(
+    () =>
+      styled('div', {
+        padding: 30,
+        backgroundColor: palette.body.backgroundColor,
+        '@sm': {
+          padding: 15,
+        },
+      }),
+    [palette.body.backgroundColor]
+  )
+
   return (
     <Application>
       <LanguageSwitcher />
-      <H2>{t.applicationTitle}</H2>
-      <P>{t.welcomeText}</P>
+      <DisplayModeSwitcher />
+      <Typography element="H2">{t.applicationTitle}</Typography>
+      <Typography element="P">{t.welcomeText}</Typography>
       <PeriodSelector />
       <RoomsList />
     </Application>

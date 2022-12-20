@@ -11,9 +11,17 @@ const possibleDateFormats = z.union([
 
 export type DateFormatsType = z.infer<typeof possibleDateFormats>
 
+const availableDisplayModesType = z.union([
+  z.literal('light'),
+  z.literal('dark'),
+])
+
+export type DisplayModeType = z.infer<typeof availableDisplayModesType>
+
 const managerConfigurationValidator = z.object({
   defaultLocale: availableLocales,
   defaultDateFormat: possibleDateFormats,
+  defaultDisplayType: availableDisplayModesType,
   partiallyAvailableLimit: z.number().min(0),
   preferredDateFormat: z.array(
     z.object({
@@ -25,7 +33,7 @@ const managerConfigurationValidator = z.object({
 
 export type ManagerConfigType = z.infer<typeof managerConfigurationValidator>
 
-export type preferredDatesFormats = {
+export type PreferredDatesFormats = {
   locale: LocalesType
   preferredDateFormat: DateFormatsType
 }
@@ -33,6 +41,7 @@ export type preferredDatesFormats = {
 export const managerConfig: ManagerConfigType = {
   defaultLocale: 'en-US',
   defaultDateFormat: 'MM/dd/yyyy',
+  defaultDisplayType: 'light',
   partiallyAvailableLimit: 3,
   preferredDateFormat: [
     { locale: 'en-US', preferredDateFormat: 'MM/dd/yyyy' },

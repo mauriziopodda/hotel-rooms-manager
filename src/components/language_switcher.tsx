@@ -26,22 +26,22 @@ export const LanguageSwitcher = () => {
 
   return (
     <>
-      {locale !== 'it-IT' && (
-        <Button
-          onClick={() => {
-            handleSwitchLanguage('it-IT')
-          }}
-        >
-          Italiano
-        </Button>
-      )}
-      {locale !== 'en-US' && (
+      {locale === 'it-IT' && (
         <Button
           onClick={() => {
             handleSwitchLanguage('en-US')
           }}
         >
           English
+        </Button>
+      )}
+      {locale === 'en-US' && (
+        <Button
+          onClick={() => {
+            handleSwitchLanguage('it-IT')
+          }}
+        >
+          Italiano
         </Button>
       )}
     </>

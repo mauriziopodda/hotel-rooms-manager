@@ -3,7 +3,7 @@ import useTranslator from '../hooks/use_translator'
 import { Floor } from './floor'
 import { RoomsListItem } from './rooms_list_item'
 import { styled } from './styled/common'
-import { H3 } from './styled/typography'
+import { Typography } from './styled/typography'
 import React from 'react'
 
 import type { RoomType } from '../atoms/rooms'
@@ -15,7 +15,7 @@ type RoomsListPropsType = {
   reservationStatus?: RoomReservationStatusType | null
 }
 
-const FloorName = styled(H3, {
+const FloorName = styled('div', {
   marginRight: 32,
   minWidth: 50,
   whiteSpace: 'nowrap',
@@ -54,9 +54,11 @@ export const RoomsList: FC<RoomsListPropsType> = ({
       {floors.map((floor) => {
         return (
           <Floor key={floor}>
-            <FloorName>
-              {floor}° {t.floor}
-            </FloorName>
+            <Typography element="H3">
+              <FloorName>
+                {floor}° {t.floor}
+              </FloorName>
+            </Typography>
             <RoomsContainer>
               {rooms
                 .filter((room) => room.floor === floor)

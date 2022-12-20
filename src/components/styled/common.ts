@@ -1,12 +1,13 @@
 import { createStitches } from '@stitches/react'
 
-type ColorsPaletteType = {
+export type ColorPaletteType = {
   availablity: {
     available: string
     partiallyAvailable: string
     unavailable: string
     unknown: string
   }
+  body: { backgroundColor: string }
   primary: string
   primaryDark: string
   primaryLight: string
@@ -14,6 +15,13 @@ type ColorsPaletteType = {
     isSuiteBorder: string
     isSuiteStar: string
   }
+  text: {
+    color: string
+  }
+}
+export type ThemePaletteType = {
+  dark: ColorPaletteType
+  light: ColorPaletteType
 }
 
 export const { styled } = createStitches({
@@ -24,19 +32,40 @@ export const { styled } = createStitches({
   },
 })
 
-export const palette: ColorsPaletteType = {
-  primary: '#00CCCC',
-  primaryLight: '#e6f9fa',
-  primaryDark: '#00b3b3',
-  room: {
-    isSuiteBorder: '#ffd863',
-    isSuiteStar: '#f5b801',
+export const palette: ThemePaletteType = {
+  light: {
+    availablity: {
+      available: '#6eff5e',
+      partiallyAvailable: '#FFBF00',
+      unavailable: '#ff2942',
+      unknown: '#EAEAEA',
+    },
+    body: { backgroundColor: '#fff' },
+    primary: '#00CCCC',
+    primaryLight: '#e6f9fa',
+    primaryDark: '#00b3b3',
+    room: {
+      isSuiteBorder: '#ffd863',
+      isSuiteStar: '#f5b801',
+    },
+    text: { color: '#000' },
   },
-  availablity: {
-    available: '#6eff5e',
-    partiallyAvailable: '#FFBF00',
-    unavailable: '#ff2942',
-    unknown: '#EAEAEA',
+  dark: {
+    availablity: {
+      available: '#6eff5e',
+      partiallyAvailable: '#FFBF00',
+      unavailable: '#ff2942',
+      unknown: '#606366',
+    },
+    body: { backgroundColor: '#222426' },
+    primary: '#00CCCC',
+    primaryLight: '#313336',
+    primaryDark: '#00b3b3',
+    room: {
+      isSuiteBorder: '#ffd863',
+      isSuiteStar: '#f5b801',
+    },
+    text: { color: '#fff' },
   },
 }
 
