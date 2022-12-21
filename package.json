@@ -1,0 +1,46 @@
+{
+  "name": "hotel-rooms-manager",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --watch",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@stitches/react": "^1.2.8",
+    "@wojtekmaj/react-daterange-picker": "^4.1.0",
+    "axios": "^1.2.1",
+    "jotai": "^1.11.2",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zod": "^3.20.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-datepicker": "^4.8.0",
+    "@types/react-dom": "^18.0.9",
+    "@types/wojtekmaj__react-daterange-picker": "^3.4.1",
+    "@typescript-eslint/eslint-plugin": "5.26.0",
+    "@typescript-eslint/parser": "5.26.0",
+    "@vitejs/plugin-react": "^3.0.0",
+    "eslint": "8.16.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-config-xo": "0.41.0",
+    "eslint-config-xo-react": "0.27.0",
+    "eslint-config-xo-typescript": "0.51.1",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "7.30.0",
+    "eslint-plugin-react-hooks": "4.5.0",
+    "eslint-plugin-sort-destructure-keys": "1.4.0",
+    "eslint-plugin-unicorn": "42.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "2.7.1",
+    "typescript": "4.9.3",
+    "vite": "^4.0.0"
+  }
+}
