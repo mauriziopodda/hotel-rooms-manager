@@ -72,6 +72,7 @@ export const PeriodSelector = () => {
           {
             color: palette.primary,
             outline: 'none',
+            textAlign: 'center',
           },
         '& .react-calendar__navigation button': {
           color: palette.text.color,
