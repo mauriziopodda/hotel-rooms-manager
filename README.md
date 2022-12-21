@@ -14,7 +14,8 @@ Uses:
 
 ## How to start the application
 
-1. Download the package
-2. `yarn install` (or npm, pnpm or other package manager)
-3. `yarn dev` to start
-4. Go to `http://127.0.0.1:5173/` (ot whatever other port you will setup in the `vite.config.ts`)
+1. Download the package and open it with your IDE
+2. In the terminal: `yarn install` (or npm, pnpm or other package manager)
+3. In the terminal: `yarn dev` to start
+4. In the terminal: `yarn typecheck` to start the type checking
+5. On the browser: Go to `http://127.0.0.1:5173/` (ot whatever other port you will setup in the `vite.config.ts`)
