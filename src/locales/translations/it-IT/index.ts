@@ -1,13 +1,14 @@
 import type { TranslationsConfigType } from '../../../atoms/translations'
 
 export const managerTranslations: TranslationsConfigType = {
+  amenities: 'servizi',
   applicationTitle: 'Hotel Rooms Manager',
-  welcomeText: 'Benvenuto nel sistema di gestione delle stanze.',
+  available: 'disponibile',
+  cleaned: 'pulita',
+  floor: 'piano',
+  rangeDivider: 'al',
   room: 'stanza',
   roomNumber: 'numero',
-  floor: 'piano',
-  amenities: 'servizi',
-  cleaned: 'pulita',
-  available: 'disponibile',
   unavailable: 'non disponibile',
+  welcomeText: 'Benvenuto nel sistema di gestione delle stanze.',
 }

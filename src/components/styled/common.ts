@@ -8,8 +8,26 @@ export type ColorPaletteType = {
     unknown: string
   }
   body: { backgroundColor: string }
+  calendar: {
+    navigation: {
+      disabled: {
+        backgroundColor: string
+        color: string
+      }
+    }
+    selectRange: {
+      backgroundColor: string
+    }
+    tile: {
+      now: {
+        backgroundColor: string
+        color: string
+      }
+    }
+  }
   primary: string
   primaryDark: string
+  primaryHighLight: string
   primaryLight: string
   room: {
     isSuiteBorder: string
@@ -41,7 +59,25 @@ export const palette: ThemePaletteType = {
       unknown: '#EAEAEA',
     },
     body: { backgroundColor: '#fff' },
+    calendar: {
+      navigation: {
+        disabled: {
+          color: '#cccccc',
+          backgroundColor: '#e6f9fa',
+        },
+      },
+      selectRange: {
+        backgroundColor: '#cbfafd',
+      },
+      tile: {
+        now: {
+          backgroundColor: '#cbfafd',
+          color: '#000',
+        },
+      },
+    },
     primary: '#00CCCC',
+    primaryHighLight: '#a4e6e6',
     primaryLight: '#e6f9fa',
     primaryDark: '#00b3b3',
     room: {
@@ -58,7 +94,25 @@ export const palette: ThemePaletteType = {
       unknown: '#606366',
     },
     body: { backgroundColor: '#222426' },
+    calendar: {
+      navigation: {
+        disabled: {
+          color: '#606366',
+          backgroundColor: '#313336',
+        },
+      },
+      selectRange: {
+        backgroundColor: '#cbfafd',
+      },
+      tile: {
+        now: {
+          backgroundColor: '#606366',
+          color: '#000',
+        },
+      },
+    },
     primary: '#00CCCC',
+    primaryHighLight: '#a4e6e6',
     primaryLight: '#313336',
     primaryDark: '#00b3b3',
     room: {

@@ -1,15 +1,16 @@
 import { atom } from 'jotai'
 
 export type TranslationsConfigType = {
+  amenities: string
   applicationTitle: string
-  welcomeText: string
+  available: string
+  cleaned: string
+  floor: string
+  rangeDivider: string
   room: string
   roomNumber: string
-  floor: string
-  amenities: string
-  cleaned: string
-  available: string
   unavailable: string
+  welcomeText: string
 }
 
 export const translationsAtom = atom<TranslationsConfigType>(
