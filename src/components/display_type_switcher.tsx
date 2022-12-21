@@ -17,8 +17,6 @@ export const DisplayModeSwitcher = () => {
     setPalette(themePalette[displayMode])
   }
 
-  console.log('displayMode', displayMode)
-
   return (
     <>
       {displayMode === 'light' && (
