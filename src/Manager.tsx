@@ -15,7 +15,9 @@ import type { FC } from 'react'
 // TODO: add comments for everything
 // TODO: improve translations
 // TODO: add navigation
-// TOOD: move all the icons somewhere
+// TODO: move all the icons
+// TODO: put some threejs stuff
+// TODO: put some map/floor statistics
 
 const Manager: FC = () => {
   const { translations: t } = useTranslator()

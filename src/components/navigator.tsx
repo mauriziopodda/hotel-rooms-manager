@@ -1,5 +1,6 @@
 import BuildingIcon from '../assets/images/building.svg'
 import RoomsListIcon from '../assets/images/rooms-list.svg'
+import ThreeDBuildingIcon from '../assets/images/three-d-building.svg'
 import { paletteAtom } from '../atoms/palette'
 import { styled } from './styled/common'
 import { useAtomValue } from 'jotai'
@@ -86,7 +87,15 @@ const Dot: FC<DotPropsType> = ({
               },
             },
           }),
-    [color, icon, palette.primary, size]
+    [
+      color,
+      distance,
+      icon,
+      palette.primary,
+      palette.primaryDark,
+      palette.white,
+      size,
+    ]
   )
 
   return (
@@ -231,6 +240,14 @@ export const Navigator: FC<NavigatorPropsType> = ({
         <Dot
           color={palette.primary}
           icon={BuildingIcon}
+          size={itemsSize}
+          onClick={() => {
+            console.log('TEST 2')
+          }}
+        />
+        <Dot
+          color={palette.primary}
+          icon={ThreeDBuildingIcon}
           size={itemsSize}
           onClick={() => {
             console.log('TEST 2')
