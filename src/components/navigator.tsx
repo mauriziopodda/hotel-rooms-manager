@@ -51,11 +51,21 @@ const Dot: FC<DotPropsType> = ({
               position: 'absolute',
               width: `${size}px`,
               height: `${size}px`,
-              backgroundColor: 'white',
+              backgroundColor: palette.white,
               maskImage: `url(${icon})`,
               maskSize: `${size / 2}px`,
               '-webkit-mask-position': 'center',
               '-webkit-mask-repeat': 'no-repeat',
+            },
+
+            variants: {
+              hasHover: {
+                true: {
+                  '&:hover': {
+                    backgroundColor: palette.primaryDark,
+                  },
+                },
+              },
             },
           })
         : styled('div', {
@@ -65,6 +75,16 @@ const Dot: FC<DotPropsType> = ({
             content: '',
             backgroundColor: color,
             borderRadius: '50%',
+
+            variants: {
+              hasHover: {
+                true: {
+                  '&:hover': {
+                    backgroundColor: palette.primaryDark,
+                  },
+                },
+              },
+            },
           }),
     [color, icon, palette.primary, size]
   )
@@ -72,6 +92,7 @@ const Dot: FC<DotPropsType> = ({
   return (
     <DotElement
       className={type === 'navigator-menu-icon-dot' ? type : undefined}
+      hasHover={Boolean(onClick)}
       onClick={onClick}
     />
   )
