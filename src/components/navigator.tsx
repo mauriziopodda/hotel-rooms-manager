@@ -179,7 +179,9 @@ export const Navigator: FC<NavigatorPropsType> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useOnClickOutside(menuTriggerReference, () => {
-    setIsMenuOpen(!isMenuOpen)
+    if (isMenuOpen) {
+      setIsMenuOpen(false)
+    }
   })
 
   return (
