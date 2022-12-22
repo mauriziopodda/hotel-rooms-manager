@@ -2,10 +2,11 @@ import BuildingIcon from '../assets/images/building.svg'
 import RoomsListIcon from '../assets/images/rooms-list.svg'
 import ThreeDBuildingIcon from '../assets/images/three-d-building.svg'
 import { paletteAtom } from '../atoms/palette'
+import useOnClickOutside from '../hooks/use_clickoutside'
 import { styled } from './styled/common'
 import { useAtomValue } from 'jotai'
 import React, { useMemo, useRef, useState } from 'react'
-import { useOnClickOutside } from 'usehooks-ts'
+import { Link } from 'react-router-dom'
 
 import type { FC } from 'react'
 
@@ -18,6 +19,7 @@ type NavigatorPropsType = {
 type DotPropsType = {
   color: string
   distance?: number
+  hasHover?: boolean
   icon?: string
   onClick?: () => void
   size: number
@@ -28,6 +30,7 @@ type DotsPropsType = Omit<DotPropsType, 'onClick'> & { amount: number }
 const Dot: FC<DotPropsType> = ({
   color,
   distance = 2,
+  hasHover = false,
   icon,
   onClick,
   size,
@@ -101,7 +104,7 @@ const Dot: FC<DotPropsType> = ({
   return (
     <DotElement
       className={type === 'navigator-menu-icon-dot' ? type : undefined}
-      hasHover={Boolean(onClick)}
+      hasHover={Boolean(onClick) || hasHover}
       onClick={onClick}
     />
   )
@@ -203,7 +206,7 @@ export const Navigator: FC<NavigatorPropsType> = ({
           },
         },
       }),
-    [minMenuSize, palette.primary, palette.white]
+    [minMenuSize, palette.body.backgroundColor, palette.primary, palette.white]
   )
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -229,30 +232,31 @@ export const Navigator: FC<NavigatorPropsType> = ({
         />
       </NavigatorTrigger>
       <MenuItemsContainer isOpen={isMenuOpen}>
-        <Dot
-          color={palette.primary}
-          icon={RoomsListIcon}
-          size={itemsSize}
-          onClick={() => {
-            console.log('TEST 1')
-          }}
-        />
-        <Dot
-          color={palette.primary}
-          icon={BuildingIcon}
-          size={itemsSize}
-          onClick={() => {
-            console.log('TEST 2')
-          }}
-        />
-        <Dot
-          color={palette.primary}
-          icon={ThreeDBuildingIcon}
-          size={itemsSize}
-          onClick={() => {
-            console.log('TEST 2')
-          }}
-        />
+        <Link to="/">
+          {' '}
+          <Dot
+            hasHover
+            color={palette.primary}
+            icon={RoomsListIcon}
+            size={itemsSize}
+          />
+        </Link>
+        <Link to="/stats">
+          <Dot
+            hasHover
+            color={palette.primary}
+            icon={BuildingIcon}
+            size={itemsSize}
+          />
+        </Link>
+        <Link to="/3d">
+          <Dot
+            hasHover
+            color={palette.primary}
+            icon={ThreeDBuildingIcon}
+            size={itemsSize}
+          />
+        </Link>
       </MenuItemsContainer>
     </NavigatorContainer>
   )
