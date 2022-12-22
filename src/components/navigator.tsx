@@ -16,6 +16,7 @@ type NavigatorPropsType = {
 
 type DotPropsType = {
   color: string
+  distance?: number
   icon?: string
   onClick?: () => void
   size: number
@@ -23,7 +24,14 @@ type DotPropsType = {
 }
 type DotsPropsType = Omit<DotPropsType, 'onClick'> & { amount: number }
 
-const Dot: FC<DotPropsType> = ({ color, icon, onClick, size, type }) => {
+const Dot: FC<DotPropsType> = ({
+  color,
+  distance = 2,
+  icon,
+  onClick,
+  size,
+  type,
+}) => {
   const palette = useAtomValue(paletteAtom)
 
   const DotElement = useMemo(
@@ -32,7 +40,7 @@ const Dot: FC<DotPropsType> = ({ color, icon, onClick, size, type }) => {
         ? styled('div', {
             width: `${size}px`,
             height: `${size}px`,
-            margin: '2px 0',
+            margin: `${distance}px 0`,
             content: '',
             border: `1px solid ${palette.primary}`,
             backgroundColor: color,
@@ -113,7 +121,7 @@ export const Navigator: FC<NavigatorPropsType> = ({
         right: 20,
         top: 20,
         cursor: 'pointer',
-        zIndex: 1,
+        zIndex: 1000,
         width: `${itemsSize}px`,
       }),
     [itemsSize]
@@ -122,20 +130,24 @@ export const Navigator: FC<NavigatorPropsType> = ({
   const MenuItemsContainer = useMemo(
     () =>
       styled('div', {
-        display: 'none',
+        display: 'flex',
+        opacity: 0,
         flexDirection: 'column',
         alignItems: 'center',
         marginTop: `${itemsOffset}px`,
-
+        transform: `translateY(-${minMenuSize}px)`,
+        transition: 'opacity 0.3s, transform 0.5s',
+        zIndex: 998,
         variants: {
           isOpen: {
             true: {
-              display: 'flex',
+              opacity: 1,
+              transform: `translateY(0px)`,
             },
           },
         },
       }),
-    [itemsOffset]
+    [itemsOffset, minMenuSize]
   )
 
   const NavigatorTrigger = useMemo(
@@ -145,11 +157,13 @@ export const Navigator: FC<NavigatorPropsType> = ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: palette.body.backgroundColor,
         border: `1px solid ${palette.primary}`,
         borderRadius: '50%',
         width: `${minMenuSize}px`,
         height: `${minMenuSize}px`,
         cursor: 'pointer',
+        zIndex: 999,
 
         '&:hover': {
           backgroundColor: palette.primary,
