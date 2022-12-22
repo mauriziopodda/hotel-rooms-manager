@@ -1,6 +1,7 @@
 import { paletteAtom } from './atoms/palette'
 import { DisplayModeSwitcher } from './components/display_type_switcher'
 import { LanguageSwitcher } from './components/language_switcher'
+import { Navigator } from './components/navigator'
 import { PeriodSelector } from './components/period_selector'
 import { RoomsList } from './components/rooms_list'
 import { styled } from './components/styled/common'
@@ -13,7 +14,8 @@ import type { FC } from 'react'
 
 // TODO: add comments for everything
 // TODO: improve translations
-// TODO: improve type of translations
+// TODO: add navigation
+// TOOD: move all the icons somewhere
 
 const Manager: FC = () => {
   const { translations: t } = useTranslator()
@@ -35,6 +37,7 @@ const Manager: FC = () => {
   return (
     <Application>
       <LanguageSwitcher />
+      <Navigator itemsSize={60} triggerSize={40} />
       <DisplayModeSwitcher />
       <Typography element="H2">{t.applicationTitle}</Typography>
       <Typography element="P">{t.welcomeText}</Typography>
