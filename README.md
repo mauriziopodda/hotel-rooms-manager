@@ -27,4 +27,4 @@ SOme react feature used:
 2. In the terminal: `yarn install` (or npm, pnpm or other package manager)
 3. In the terminal: `yarn dev` to start
 4. In the terminal: `yarn typecheck` to start the type checking
-5. On the browser: Go to `http://127.0.0.1:5173/` (ot whatever other port you will setup in the `vite.config.ts`)
+5. On the browser: Go to `http://127.0.0.1:5173/` (or whatever other port you will setup in the `vite.config.ts`)
