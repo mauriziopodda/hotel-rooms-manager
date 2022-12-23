@@ -1,5 +1,6 @@
 import { paletteAtom } from './atoms/palette'
 import { Layout } from './components/layout'
+import { Loader } from './components/loader'
 import { NoRoute } from './components/no_route'
 import { RoomsList } from './components/rooms_list'
 import { styled } from './components/styled/common'
@@ -15,7 +16,6 @@ import type { FC } from 'react'
 // TODO: put some threejs stuff
 // TODO: add tooltips
 // TODO: put some map/floor statistics
-// TODO: styling fot he loader
 // TODO: improve best solution for the scrollar jumping
 
 const Stats = React.lazy(async () => import('./components/stats'))
@@ -44,7 +44,7 @@ const Manager: FC = () => {
             <Route index element={<RoomsList />} />
             <Route
               element={
-                <React.Suspense fallback={<div>Loading...</div>}>
+                <React.Suspense fallback={<Loader mode="fullScreen" />}>
                   <RoomsList />
                 </React.Suspense>
               }
@@ -52,7 +52,7 @@ const Manager: FC = () => {
             />
             <Route
               element={
-                <React.Suspense fallback={<div>Loading...</div>}>
+                <React.Suspense fallback={<Loader mode="fullScreen" />}>
                   <Stats />
                 </React.Suspense>
               }
@@ -60,7 +60,7 @@ const Manager: FC = () => {
             />
             <Route
               element={
-                <React.Suspense fallback={<div>Loading...</div>}>
+                <React.Suspense fallback={<Loader mode="fullScreen" />}>
                   <ThreeD />
                 </React.Suspense>
               }

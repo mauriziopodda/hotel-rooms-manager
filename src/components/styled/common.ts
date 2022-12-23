@@ -28,6 +28,9 @@ export type ColorPaletteType = {
       }
     }
   }
+  loader: {
+    backgroundColor: string
+  }
   primary: string
   primaryDark: string
   primaryHighLight: string
@@ -127,6 +130,9 @@ export const palette: ThemePaletteType = {
         },
       },
     },
+    loader: {
+      backgroundColor: 'rgba(255,255,255,0.8)',
+    },
     primary: '#00CCCC',
     primaryHighLight: '#a4e6e6',
     primaryLight: '#e6f9fa',
@@ -163,6 +169,9 @@ export const palette: ThemePaletteType = {
           color: '#000',
         },
       },
+    },
+    loader: {
+      backgroundColor: 'rgba(0,0,0,0.3)',
     },
     primary: '#00CCCC',
     primaryHighLight: '#a4e6e6',

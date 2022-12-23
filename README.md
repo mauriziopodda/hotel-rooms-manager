@@ -2,15 +2,24 @@
 
 An hotel rooms manager that shows the hotel room facilities, occupancy status, cleaning status and more...
 
-Uses:
+Uses those technologies:
 
-- `vite` as server
-- `jotai` for state management that avoids re-rendering and complex use of multiple contexts
-- `axios` for data fetching
-- `zod` as validator
-- `stitches` for styling
+- `vite` as server/bundler, why? You can find comparisons here https://vitejs.dev/guide/comparisons.html
 - `eslint` and `prettier` for code linting
+- `reactjs` as frontend library
+
+Some of the packages used:
+
+- `jotai` for state management that avoids re-rendering and complex use of multiple contexts https://jotai.org/
+- `axios` for data fetching, IMO the easiest and best package https://www.npmjs.com/package/axios
+- `zod` as validator https://github.com/colinhacks/zod
+- `stitches` for styling CSS-in-JS, very fast loading https://stitches.dev/
 - `moment` to manage the dates
+
+SOme react feature used:
+
+- lazy load
+- hooks (also custom)
 
 ## How to start the application
 
