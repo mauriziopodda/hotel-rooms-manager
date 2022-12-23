@@ -1,6 +1,7 @@
 import useRooms from '../hooks/use_rooms'
 import useTranslator from '../hooks/use_translator'
 import { Floor } from './floor'
+import { PeriodSelector } from './period_selector'
 import { RoomsListItem } from './rooms_list_item'
 import { styled } from './styled/common'
 import { Typography } from './styled/typography'
@@ -51,6 +52,7 @@ export const RoomsList: FC<RoomsListPropsType> = ({
 
   return (
     <>
+      <PeriodSelector />
       {floors.map((floor) => {
         return (
           <Floor key={floor}>

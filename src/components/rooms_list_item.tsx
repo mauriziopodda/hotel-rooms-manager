@@ -2,7 +2,7 @@ import IconBedDoublePlusSingle from '../assets/images/bed-double-plus-single.svg
 import IconBedDouble from '../assets/images/bed-double.svg'
 import IconBedSingle from '../assets/images/bed-single.svg'
 import IconBedTriple from '../assets/images/bed-triple.svg'
-import IconBedTwin from '../assets/images/bed-twin.svg.svg'
+import IconBedTwin from '../assets/images/bed-twin.svg'
 import IconStar from '../assets/images/star.svg'
 import { paletteAtom } from '../atoms/palette'
 import useTranslator from '../hooks/use_translator'

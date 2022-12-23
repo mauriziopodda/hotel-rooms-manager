@@ -1,5 +1,7 @@
 import { createStitches } from '@stitches/react'
 
+import type { CSS as StitchesCSS } from '@stitches/react'
+
 export type ColorPaletteType = {
   availablity: {
     available: string
@@ -7,6 +9,7 @@ export type ColorPaletteType = {
     unavailable: string
     unknown: string
   }
+  black: string
   body: { backgroundColor: string }
   calendar: {
     navigation: {
@@ -25,6 +28,9 @@ export type ColorPaletteType = {
       }
     }
   }
+  loader: {
+    backgroundColor: string
+  }
   primary: string
   primaryDark: string
   primaryHighLight: string
@@ -36,10 +42,56 @@ export type ColorPaletteType = {
   text: {
     color: string
   }
+  white: string
 }
 export type ThemePaletteType = {
   dark: ColorPaletteType
   light: ColorPaletteType
+}
+
+type AllowedDistanceUnits =
+  | '%'
+  | 'ch'
+  | 'pt'
+  | 'px'
+  | 'rem'
+  | 'vh'
+  | 'vmax'
+  | 'vmin'
+  | 'vw'
+
+type DistanceType = `${number}${AllowedDistanceUnits}`
+
+const stitchesCSSUtils = {
+  icon: (url: string) => ({
+    '-webkit-mask-image': `url(${url})`,
+    '-webkit-mask-position': 'center',
+    '-webkit-mask-repeat': 'no-repeat',
+    maskImage: `url(${url})`,
+    maskPosition: 'center',
+    maskRepeat: 'no-repeat',
+  }),
+
+  iconSize: (size: DistanceType) => ({
+    '-webkit-mask-size': size,
+    height: size,
+    maskSize: size,
+    width: size,
+  }),
+
+  iconPosition: (position: 'center') => ({
+    '-webkit-mask-position': position,
+    maskPosition: position,
+  }),
+
+  iconColor: (color: StitchesCSS['color']) => ({
+    backgroundColor: color as string,
+  }),
+
+  iconRepeat: (repeat: 'no-repeat' | 'repeat') => ({
+    '-webkit-mask-repeat': repeat,
+    maskRepeat: repeat,
+  }),
 }
 
 export const { styled } = createStitches({
@@ -48,6 +100,7 @@ export const { styled } = createStitches({
     md: '(max-width: 768px)',
     l: '(max-width: 1024px)',
   },
+  utils: stitchesCSSUtils,
 })
 
 export const palette: ThemePaletteType = {
@@ -58,6 +111,7 @@ export const palette: ThemePaletteType = {
       unavailable: '#ff2942',
       unknown: '#EAEAEA',
     },
+    black: '#000',
     body: { backgroundColor: '#fff' },
     calendar: {
       navigation: {
@@ -76,6 +130,9 @@ export const palette: ThemePaletteType = {
         },
       },
     },
+    loader: {
+      backgroundColor: 'rgba(255,255,255,0.8)',
+    },
     primary: '#00CCCC',
     primaryHighLight: '#a4e6e6',
     primaryLight: '#e6f9fa',
@@ -85,6 +142,7 @@ export const palette: ThemePaletteType = {
       isSuiteStar: '#f5b801',
     },
     text: { color: '#000' },
+    white: '#fff',
   },
   dark: {
     availablity: {
@@ -93,6 +151,7 @@ export const palette: ThemePaletteType = {
       unavailable: '#ff2942',
       unknown: '#606366',
     },
+    black: '#000',
     body: { backgroundColor: '#222426' },
     calendar: {
       navigation: {
@@ -111,6 +170,9 @@ export const palette: ThemePaletteType = {
         },
       },
     },
+    loader: {
+      backgroundColor: 'rgba(0,0,0,0.3)',
+    },
     primary: '#00CCCC',
     primaryHighLight: '#a4e6e6',
     primaryLight: '#313336',
@@ -120,6 +182,7 @@ export const palette: ThemePaletteType = {
       isSuiteStar: '#f5b801',
     },
     text: { color: '#fff' },
+    white: '#fff',
   },
 }
 

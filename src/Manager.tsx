@@ -1,23 +1,27 @@
 import { paletteAtom } from './atoms/palette'
-import { DisplayModeSwitcher } from './components/display_type_switcher'
-import { LanguageSwitcher } from './components/language_switcher'
-import { PeriodSelector } from './components/period_selector'
+import { Layout } from './components/layout'
+import { Loader } from './components/loader'
+import { NoRoute } from './components/no_route'
 import { RoomsList } from './components/rooms_list'
 import { styled } from './components/styled/common'
-import { Typography } from './components/styled/typography'
-import useTranslator from './hooks/use_translator'
 import { useAtomValue } from 'jotai'
 import React, { useMemo } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import type { FC } from 'react'
 
 // TODO: add comments for everything
 // TODO: improve translations
-// TODO: improve type of translations
+// TODO: move all the icons
+// TODO: put some threejs stuff
+// TODO: add tooltips
+// TODO: put some map/floor statistics
+// TODO: improve best solution for the scrollar jumping
+
+const Stats = React.lazy(async () => import('./components/stats'))
+const ThreeD = React.lazy(async () => import('./components/three_d'))
 
 const Manager: FC = () => {
-  const { translations: t } = useTranslator()
-
   const palette = useAtomValue(paletteAtom)
 
   const Application = useMemo(
@@ -34,12 +38,38 @@ const Manager: FC = () => {
 
   return (
     <Application>
-      <LanguageSwitcher />
-      <DisplayModeSwitcher />
-      <Typography element="H2">{t.applicationTitle}</Typography>
-      <Typography element="P">{t.welcomeText}</Typography>
-      <PeriodSelector />
-      <RoomsList />
+      <Router>
+        <Routes>
+          <Route element={<Layout />} path="/">
+            <Route index element={<RoomsList />} />
+            <Route
+              element={
+                <React.Suspense fallback={<Loader mode="fullScreen" />}>
+                  <RoomsList />
+                </React.Suspense>
+              }
+              path="/"
+            />
+            <Route
+              element={
+                <React.Suspense fallback={<Loader mode="fullScreen" />}>
+                  <Stats />
+                </React.Suspense>
+              }
+              path="/stats"
+            />
+            <Route
+              element={
+                <React.Suspense fallback={<Loader mode="fullScreen" />}>
+                  <ThreeD />
+                </React.Suspense>
+              }
+              path="/3d"
+            />
+            <Route element={<NoRoute />} path="*" />
+          </Route>
+        </Routes>
+      </Router>
     </Application>
   )
 }
